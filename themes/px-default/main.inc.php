@@ -18,6 +18,11 @@ if (count($events))
     foreach ($events as $event)
     {
         $timestamp = $event->get_date();
+	$timestamp = current_time('timestamp',0);
+
+//	echo "<h1 id='fuck'>". $timestamp."</h1>";
+//	echo "<h1 id='shit'>". current_time( 'timestamp' , 1) ."</h1>";
+//	echo "<h1 id='cunt'>". current_time( 'timestamp' , 0 ) ."</h1>";
         if ($today == date('m d Y', $timestamp)) $this_day = $lifestream->__('Today');
         else if ($yesterday == date('m d Y', $timestamp)) $this_day = $lifestream->__('Yesterday');
         else $this_day = $lifestream->__(ucfirst(htmlentities(date($lifestream->get_option('day_format'), $timestamp))));
@@ -36,7 +41,9 @@ if (count($events))
         echo '<p class="lifestream-meta">';
         echo '<img class="lifestream-icon" src="' . $event->feed->get_icon_url() . '" /> ';
         echo '<span class="lifestream-hour">';
-        echo ($today == date('m d Y', $timestamp)) ? $lifestream->timesince($event->timestamp) : date($lifestream->get_option('hour_format'), $event->timestamp);
+
+        echo ($today == date('m d Y', $timestamp)) ? $lifestream->timesince( current_time('timestamp',0) ) : date($lifestream->get_option('hour_format'), current_time('timestamp',0) );
+
         echo '</span> ';
         echo '<span class="lifestream-via">via ' . $event->get_feed_label($options) . '</span>';
         echo '</p>'; // .lifestream-meta
