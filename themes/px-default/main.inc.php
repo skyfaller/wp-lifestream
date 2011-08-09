@@ -18,7 +18,7 @@ if (count($events))
     foreach ($events as $event)
     {
         $timestamp = $event->get_date();
-	$timestamp = current_time('timestamp',0);
+//	$timestamp = current_time('timestamp',0);
 
 //	echo "<h1 id='fuck'>". $timestamp."</h1>";
 //	echo "<h1 id='shit'>". current_time( 'timestamp' , 1) ."</h1>";
@@ -42,8 +42,14 @@ if (count($events))
         echo '<img class="lifestream-icon" src="' . $event->feed->get_icon_url() . '" /> ';
         echo '<span class="lifestream-hour">';
 
-        echo ($today == date('m d Y', $timestamp)) ? $lifestream->timesince( current_time('timestamp',0) ) : date($lifestream->get_option('hour_format'), current_time('timestamp',0) );
-
+//        echo ($today == date('m d Y', $timestamp)) ? $lifestream->timesince( current_time('timestamp',0) ) : date($lifestream->get_option('hour_format'), current_time('timestamp',0) );
+//        echo  date($lifestream->get_option('hour_format'), current_time('',0) );
+	$evtTime = $event->timestamp;
+//	$evtTime = current_time('timestamp',0);
+//	echo $evtTime;
+	$seconds_offset = get_option( 'gmt_offset' ) * 3600;
+//	echo "<h1 id='fuck'>".get_option( 'gmt_offset')."</h1>";
+	echo date('Y.m.d g:i a', $evtTime + $seconds_offset );
         echo '</span> ';
         echo '<span class="lifestream-via">via ' . $event->get_feed_label($options) . '</span>';
         echo '</p>'; // .lifestream-meta
