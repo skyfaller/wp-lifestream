@@ -1,3 +1,4 @@
+<!-- digest px-Default template -->
 <table class="lifestream">
 <?php
 foreach ($events as $event)

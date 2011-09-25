@@ -1,25 +1,34 @@
 /* generic css */
 .lifestream a { background: none; padding: 0; }
-.lifestream_date { text-align: left; margin-bottom:5px; }
-.lifestream_icon a,
-.lifestream_text a { padding: 0 !important; background-image: none !important; display: inline !important; }
-.lifestream_icon a { text-decoration: none !important; }
-.lifestream_icon { width: 16px; }
-.lifestream .lifestream_meta { color: #aaa; font-size:x-small; }
-.lifestream_text { padding: 0 0.5em; text-align: left; }
+.lifestream-date { text-align: left; margin-bottom:5px; }
+.lifestream-icon a,
+.lifestream-text a { padding: 0 !important; background-image: none !important; display: inline !important; }
+.lifestream-icon a { text-decoration: none !important; }
+.lifestream-icon { width: 16px; height: 16px; !important }
+.lifestream .lifestream-meta { color: #000; }
+
+.lifestream-label { font-size: 1em; }
+.lifestream-meta { font-size: 0.75em; }
+.lifestream-text { padding: 0 0.85em; text-align: left; }
 .lifestream img { border: 0; vertical-align: middle; }
-.lifestream_blogpost { font-size: 93%; margin-top: 5px; padding-left: 5px; font-style: italic; }
+.lifestream-blogpost { font-size: 1em; margin-top: 5px; padding-left: 5px; font-style: italic; }
+
+/* ol#lifestream li ol li, */
+.lifestream-meta { border-bottom: 1px dashed black;}
+lifestream-permalink {text-decoration: none; font-size: 0.75em;}
+
+
 /* table specific css */
 table.lifestream { border: 0; border-spacing: collapse; width: 100%; }
-table.lifestream td.lifestream_hour { text-align: center; padding: 3px 0.5em; width: 50px; }
+table.lifestream td.lifestream-hour { text-align: center; padding: 3px 0.5em; width: 50px; }
 .lifestream abbr { text-decoration: none; border: 0; }
-table.lifestream td.lifestream_icon { padding: 3px 0.5em; }
+table.lifestream td.lifestream-icon { padding: 3px 0.5em; }
 table.lifestream td { vertical-align: top; padding: 3px 0; }
 
-.lifestream_feedid_flickr div a { padding: 2px; }
+.lifestream-feedid-flickr div a { padding: 2px; }
 #sidebar .lifestream ul, .lifestream ul { list-style-type: none; margin: 0; padding: 0; }
 
-.lifestream_more span { color: #006699; text-decoration: underline; cursor: pointer; }
+.lifestream-more span { color: #006699; text-decoration: underline; cursor: pointer; }
 
 /* list specific css */
 #sidebar ul.lifestream, ul.lifestream { list-style-type: none; margin: 0 0; padding: 0 5px; }
@@ -29,32 +38,32 @@ table.lifestream td { vertical-align: top; padding: 3px 0; }
 #sidebar ul.lifestream ul { margin-left: 0; padding-left: 0; }
 /* fix for default wp theme */
 .lifestream li:before { content: none !important; }
-ul.lifestream .lifestream_hour { font-size: smaller; }
-ul.lifestream .lifestream_text { padding-left: 0; }
-ul.lifestream .lifestream_feedid_flickr .lifestream_hour { display: none; }
+ul.lifestream .lifestream-hour { font-size: smaller; }
+ul.lifestream .lifestream-text { padding-left: 0; }
+ul.lifestream .lifestream-feedid-flickr .lifestream-hour { display: none; }
 
-.lifestream_text ul {
+.lifestream-text ul {
     margin: 5px 0;
     padding: 0;
     list-style-type: none;
     font-size: small;
 }
-html > body .lifestream_text li,
-.lifestream_text li {
+html > body .lifestream-text li,
+.lifestream-text li {
     margin: 1px 0;
     padding: 2px;
 }
-.lifestream_text .photo img { border: 1px solid #aaa; padding: 2px; margin: 0 0 3px 0; }
-.lifestream_text .photo:hover img { border: 1px solid #006699; }
+.lifestream-text .photo img { border: 1px solid #aaa; padding: 2px; margin: 0 0 3px 0; }
+.lifestream-text .photo:hover img { border: 1px solid #006699; }
 
-.lifestream_events { margin-top: 2px; }
-.lifestream_credits { margin-bottom: 50px;}
+.lifestream-events { margin-top: 2px; }
+.lifestream-credits { margin-bottom: 50px;}
 
 /* wp 3.0 new theme */
-#content tr td.lifestream_icon {
+#content tr td.lifestream-icon {
     padding: 3px 3px 3px 9px;
 }
-#content tr td.lifestream_text {
+#content tr td.lifestream-text {
     padding: 6px;
 }
 #main .widget-area ul ul.lifestream { list-style: none; margin-left: 0; }

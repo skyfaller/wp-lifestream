@@ -39,7 +39,7 @@ if (count($events))
         echo $event->render($options);
         echo '<p class="lifestream-label">' . $event->get_label($options) . '</p>';
         echo '<p class="lifestream-meta">';
-        echo '<img class="lifestream-icon" src="' . $event->feed->get_icon_url() . '" /> ';
+        echo '&nbsp;&nbsp;<img class="lifestream-icon" src="' . $event->feed->get_icon_url() . '" /> ';
         echo '<span class="lifestream-hour">';
 
 //        echo ($today == date('m d Y', $timestamp)) ? $lifestream->timesince( current_time('timestamp',0) ) : date($lifestream->get_option('hour_format'), current_time('timestamp',0) );
@@ -49,14 +49,23 @@ if (count($events))
 //	echo $evtTime;
 	$seconds_offset = get_option( 'gmt_offset' ) * 3600;
 //	echo "<h1 id='fuck'>".get_option( 'gmt_offset')."</h1>";
+	echo '&nbsp;<a rel="nofollow" class="lifestream-permalink" href="'. get_permalink( $event->post_id)  .'">&nbsp;#&nbsp;';
 	echo date('Y.m.d g:i a', $evtTime + $seconds_offset );
+	echo '</a>&nbsp;';
         echo '</span> ';
-        echo '<span class="lifestream-via">via ' . $event->get_feed_label($options) . '</span>';
+
+        echo '<span class="lifestream-via">via &nbsp;' . $event->get_feed_label($options) . '</span>';
+//	echo '<a href="'. $event->get_url() .'">&nbsp;#';	echo '</a>';
+
+
+	echo '&nbsp;--&nbsp;<a rel="nofollow" class="lifestream-comment" href="'. get_permalink( $event->post_id)  .'#respond">';
+	echo wp_count_comments($event->post_id)->approved;
+	echo '&nbsp;Comment(s)';	echo '</a>';
+
         echo '</p>'; // .lifestream-meta
         echo '</li>';
     }
     echo $newline . "\t" . '</ol><!-- /#lifestream -->';
-    
     if ($has_paging)
     {
         echo $newline . '<p class="lifestream-paging">';
