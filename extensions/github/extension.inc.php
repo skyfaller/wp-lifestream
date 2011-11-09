@@ -3,7 +3,7 @@ class Lifestream_GitHubFeed extends Lifestream_Feed
 {
 	const ID			= 'github';
 	const NAME			= 'GitHub';
-	const URL			= 'http://www.github.com/';
+	const URL			= 'http://github.com/';
 	const DESCRIPTION	= 'You can obtain your GitHub feed URL from the <a href="https://github.com/dashboard/yours">Your Dashboard</a> page. You will find the feed link in orange feed icon next to "News Feed".';
 	const LABEL			= 'Lifestream_CommitLabel';
 
@@ -27,9 +27,17 @@ class Lifestream_GitHubFeed extends Lifestream_Feed
 	{
 		$name = $this->get_repository_name($event, $bit);
 		if (!$name) return;
-		return $this->lifestream->get_anchor_html($this->get_repository_name($event, $bit), sprintf('http://www.github.com/%s/', $name));
+		return $this->lifestream->get_anchor_html($this->get_repository_name($event, $bit), sprintf('http://github.com/%s/', $name));
 	}
 	
+	function get_public_url()
+	{
+		$url = 'http://github.com/';  // default
+		if (preg_match('/^http:\/\/[w.]*github\.com\/(.*)\.atom$/', $this->get_option('url'), $matches)) {
+			$url = 'http://github.com/'. $matches[1];
+		}
+		return $url;
+	}
 	
 	function yield($row, $url, $key)
 	{
