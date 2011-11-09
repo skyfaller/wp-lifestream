@@ -4,4 +4,8 @@
 		<li><?php echo $this->render_item($event, $chunk); ?></li>
 	<?php } ?>
 </ul>
+<?php } elseif ($visible && $this->has_excerpt($event, $event->data[0])) { ?>
+<blockquote class="lifestream_blogpost">
+	<?php echo $this->get_event_excerpt($event, $event->data[0]); ?>
+</blockquote>
 <?php } ?>
