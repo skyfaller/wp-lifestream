@@ -10,12 +10,14 @@ class Lifestream_FlickrFeed extends Lifestream_PhotoFeed
 	{		
 		return array(
 			'user_id' => array($this->lifestream->__('User ID:'), true, '', ''),
+			'user_name' => array($this->lifestream->__('User Name:'), true, '', ''),
 		);
 	}
 	
 	function get_public_url()
 	{
-		return 'http://www.flickr.com/photos/'.$this->get_option('user_id').'/';
+		if (!$this->get_option('user_name')) return 'http://www.flickr.com/photos/'.$this->get_option('user_id').'/';
+		return 'http://www.flickr.com/photos/'.$this->get_option('user_name').'/';
 	}
 
 	function get_url()
@@ -26,7 +28,7 @@ class Lifestream_FlickrFeed extends Lifestream_PhotoFeed
 	function yield($row, $url, $key)
 	{
 		$data = parent::yield($row, $url, $key);
-		$data['thumbnail'] = str_replace('_m', '_t', $data['image']); 		
+		$data['thumbnail'] = str_replace('_m', '_t', $data['image']);
 		$data['image'] = str_replace('_m', '', $data['image']);
 		return $data;
 	}

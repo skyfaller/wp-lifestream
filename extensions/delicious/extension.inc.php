@@ -3,7 +3,7 @@ class Lifestream_DeliciousFeed extends Lifestream_Feed
 {
 	const ID	= 'delicious';
 	const NAME	= 'Delicious';
-	const URL	= 'http://www.delicious.com/';
+	const URL	= 'http://delicious.com/';
 	const LABEL = 'Lifestream_BookmarkLabel';
 	const HAS_EXCERPTS	= true;
 
@@ -22,14 +22,14 @@ class Lifestream_DeliciousFeed extends Lifestream_Feed
 
 	function get_url()
 	{
-		$url = 'http://del.icio.us/rss/'.$this->get_option('username');
+		$url = 'http://delicious.com/v2/rss/'.$this->get_option('username');
 		if ($this->get_option('filter_tag')) $url .= '/'.$this->get_option('filter_tag');
 		return $url;
 	}
 	
 	function get_public_url()
 	{
-		return 'http://del.icio.us/'.$this->get_option('username');
+		return 'http://delicious.com/'.$this->get_option('username');
 	}
 
 	function yield($row, $url, $key)

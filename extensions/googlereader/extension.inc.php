@@ -44,15 +44,21 @@ class Lifestream_GoogleReaderFeed extends Lifestream_Feed
 			return 'http://www.google.com/reader/public/atom/user%2F'.$this->get_option('user_id').'%2Fstate%2Fcom.google%2Fbroadcast';
 		
 	}
-
+	
 	function get_public_url()
 	{
-		return 'http://www.google.com/reader/shared/'.$this->get_option('user_id');
+		return $this->get_option('url');
 	}
 	
 	function save_options()
 	{
-		if (preg_match('/\/reader\/shared\/([A-Za-z0-9_\.\-]+)\/?/i', $this->get_option('url'), $match))
+		// e.g. "http://www.google.com/reader/shared/user/{USERID}/state/com.google/starred"
+		if (preg_match('/\/reader\/shared\/user\/([A-Za-z0-9_\.\-]+)\/?/i', $this->get_option('url'), $match))
+		{
+			$this->update_option('user_id', $match[1]);
+		}
+		// e.g. "http://www.google.com/reader/shared/{USERID}"
+		elseif (preg_match('/\/reader\/shared\/([A-Za-z0-9_\.\-]+)\/?/i', $this->get_option('url'), $match))
 		{
 			$this->update_option('user_id', $match[1]);
 		}
